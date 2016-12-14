@@ -13,7 +13,6 @@
 
 // Index page
 Route::get('/', ['as' => 'index', 'uses' => 'IndexController@index']);
-
 // Home page
 Route::get('home', ['as' => 'home', 'uses' => 'User\HomeController@index']);
 
