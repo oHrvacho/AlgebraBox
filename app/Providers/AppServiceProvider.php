@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+      $this->app->bind('Centaur\Middleware\SentinelGuest', function ($app) {
+        return new \App\Http\Middleware\SentinelGuest;
+      });
     }
 }
