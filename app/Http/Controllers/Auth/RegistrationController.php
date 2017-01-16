@@ -6,9 +6,11 @@ use Mail;
 use Session;
 use Sentinel;
 use Activation;
+Use File;
 use App\Http\Requests;
 use Centaur\AuthManager;
 use Illuminate\Http\Request;
+use Hash;
 use App\Http\Controllers\Controller;
 
 class RegistrationController extends Controller
@@ -78,6 +80,14 @@ class RegistrationController extends Controller
                     ->subject('Your account has been created');
             }
         );
+		
+		
+		//kreira mapu u storage sa hashiranim id-om usera
+	   
+          $hashed_map = sha1('$result->user->id');
+          File::makeDirectory(base_path("storage/app/maps/user_map_$hashed_map"), 0755, true, true);
+		
+		
 
         // Ask the user to check their email for the activation link
         $result->setMessage('Registration complete.  Please check your email for activation instructions.');
@@ -158,6 +168,8 @@ class RegistrationController extends Controller
             );
         }
 
+		
+		
         $message = 'New instructions will be sent to that email address if it is associated with a inactive account.';
 
         if ($request->ajax()) {
