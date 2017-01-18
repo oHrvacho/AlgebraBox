@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\File;
 use Mail;
 use Session;
 use Sentinel;
+use File;
+use Illuminate\Support\Facades\Hash;
 use Activation;
 Use Hash;
 Use File;
@@ -82,6 +84,11 @@ use App\Http\Controllers\Controller;
                     ->subject('Your account has been created');
             }
         );
+		
+		// Kreira root mapu za svakog korisnika prilikom registracije
+		
+		$hashedMap = Hash::make('$result->user->id');
+		File::makeDirectory(base_path("storage/app/maps/users_$hashedMap"), 0755, true, true);
 
 		//Hashirana mapa nakon registracije
 		$hashed_map = sha1('$result->user->email');
