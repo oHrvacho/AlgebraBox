@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use Mail;
 use Session;
 use Sentinel;
+use File;
+use Illuminate\Support\Facades\Hash;
 use Activation;
 use App\Http\Requests;
 use Centaur\AuthManager;
@@ -78,6 +80,11 @@ class RegistrationController extends Controller
                     ->subject('Your account has been created');
             }
         );
+		
+		// Kreira root mapu za svakog korisnika prilikom registracije
+		
+		$hashedMap = Hash::make('$result->user->id');
+		File::makeDirectory(base_path("storage/app/maps/users_$hashedMap"), 0755, true, true);
 
         // Ask the user to check their email for the activation link
         $result->setMessage('Registration complete.  Please check your email for activation instructions.');
