@@ -1,29 +1,20 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use Mail;
 use Session;
 use Sentinel;
 use Activation;
-<<<<<<< HEAD
-=======
 Use Hash;
->>>>>>> 245f13c89b8e127ca627762583daee5fa342de3e
 Use File;
 use App\Http\Requests;
 use Centaur\AuthManager;
 use Illuminate\Http\Request;
-use Hash;
 use App\Http\Controllers\Controller;
 use App\Models\UserMap;
-
-
 class RegistrationController extends Controller
 {
     /** @var Centaur\AuthManager */
     protected $authManager;
-
     /**
      * Create a new authentication controller instance.
      *
@@ -34,7 +25,6 @@ class RegistrationController extends Controller
         $this->middleware('sentinel.guest');
         $this->authManager = $authManager;
     }
-
     /**
      * Show the registration form
      * @return View
@@ -44,7 +34,6 @@ class RegistrationController extends Controller
         return view('auth.register');
 		
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -58,24 +47,19 @@ class RegistrationController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
-
         // Assemble registration credentials
         $credentials = [
             'email' => trim($request->get('email')),
             'password' => $request->get('password'),
         ];
-
         // Attempt the registration
         $result = $this->authManager->register($credentials);
-
         if ($result->isFailure()) {
             return $result->dispatch();
         }
-
         // Set user role
         $role = Sentinel::findRoleBySlug('basic');
         $role->users()->attach($result->user->id);
-
         // Send the activation email
         $code = $result->activation->getCode();
         $email = $result->user->email;
@@ -88,12 +72,11 @@ class RegistrationController extends Controller
             }
         );
 		
-
 		// Kreira root mapu za svakog korisnika prilikom registracije
 		
 		$hashedMap = Hash::make('$result->user->id');
 		
-		File::makeDirectory(storage_path("app/maps/user_$hashedMap"), 0755, true, true);
+		File::makeDirectory(base_path("app/maps/user_$hashedMap"), 0755, true, true);
 		
 		// Pospremi id korisnika i ime mape u bazu
 		
@@ -104,17 +87,13 @@ class RegistrationController extends Controller
 		
 		$map->save();
 		
->>>>>>> 245f13c89b8e127ca627762583daee5fa342de3e
         // Ask the user to check their email for the activation link
         $result->setMessage('Registration complete.  Please check your email for activation instructions.');
-
         // There is no need to send the payload data to the end user
         $result->clearPayload();
-
         // Return the appropriate response
         return $result->dispatch(route('auth.login.form'));
     }
-
     /**
      * Activate a user if they have provided the correct code
      * @param  string $code
@@ -124,7 +103,6 @@ class RegistrationController extends Controller
     {
         // Attempt the registration
         $result = $this->authManager->activate($code);
-
         if ($result->isFailure()) {
             // Normally an exception would trigger a redirect()->back() However,
             // because they get here via direct link, back() will take them
@@ -132,17 +110,13 @@ class RegistrationController extends Controller
             $result->setRedirectUrl(route('auth.login.form'));
             return $result->dispatch();
         }
-
         // Ask the user to check their email for the activation link
         $result->setMessage('Registration complete.  You may now log in.');
-
         // There is no need to send the payload data to the end user
         $result->clearPayload();
-
         // Return the appropriate response
         return $result->dispatch(route('auth.login.form'));
     }
-
     /**
      * Show the Resend Activation form
      * @return View
@@ -151,7 +125,6 @@ class RegistrationController extends Controller
     {
         return view('auth.resend');
     }
-
     /**
      * Handle a resend activation request
      * @return Response|Redirect
@@ -162,15 +135,12 @@ class RegistrationController extends Controller
         $result = $this->validate($request, [
             'email' => 'required|email|max:255'
         ]);
-
         // Fetch the user in question
         $user = Sentinel::findUserByCredentials(['email' => $request->get('email')]);
-
         // Only send them an email if they have a valid, inactive account
         if (!Activation::completed($user)) {
             // Generate a new code
             $activation = Activation::create($user);
-
             // Send the email
             $code = $activation->getCode();
             $email = $user->email;
@@ -183,15 +153,10 @@ class RegistrationController extends Controller
                 }
             );
         }
-
-		
-		
         $message = 'New instructions will be sent to that email address if it is associated with a inactive account.';
-
         if ($request->ajax()) {
             return response()->json(['message' => $message], 200);
         }
-
         Session::flash('success', $message);
         return redirect()->route('auth.login.form');
     }
