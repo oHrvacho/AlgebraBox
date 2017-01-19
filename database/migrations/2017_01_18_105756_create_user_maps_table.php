@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersMaps extends Migration
+class CreateUserMapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,17 @@ class CreateUsersMaps extends Migration
      */
     public function up()
     {
-       //
-		  Schema::create('routes_map', function (Blueprint $table) {
+        Schema::create('user_maps', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('map_code');	
-            $table->integer('users_id')->unsigned();			
-			$table->timestamp('created_at')->nullable();                      
-            $table->timestamp('updated_at')->nullable();
-            
+			$table->string('name');
+			$table->integer('users_id')->unsigned();
+            $table->timestamps();
+			
 			#Index
 			$table->index('users_id');
 			
-			# Foreign key
+			#Foreign key
 			$table->foreign('users_id')->references('id')->on('users');
-			
-            $table->engine = 'InnoDB';
         });
     }
 
@@ -39,6 +34,6 @@ class CreateUsersMaps extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_maps');
+        Schema::dropIfExists('user_maps');
     }
 }
