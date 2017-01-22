@@ -9,7 +9,7 @@
 	<li class="active">Categories</li>
   </ol>
 </div>
-<div class="row">
+<div class="row">	
 	<div class="col-md-3">
 		<div class="list-group">
 			<a href="{{route('home')}}" class="list-group-item">Folders &amp; Files </a>
