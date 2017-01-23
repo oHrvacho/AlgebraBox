@@ -42,12 +42,7 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     @if (Sentinel::check())
-                        <li>
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="user"></span> {{ Sentinel::getUser()->email }} <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
-                          </ul>
-                        </li>
+                        <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
                     @else
                         <li><a href="{{ route('auth.login.form') }}">Login</a></li>
                         <li><a href="{{ route('auth.register.form') }}">Register</a></li>

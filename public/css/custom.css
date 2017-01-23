@@ -300,3 +300,13 @@
 		width: 100%;
 	}
 
+/**
+ * Folders
+ *
+ */
+	.folder-info {
+		border: 1px solid #efefef;
+		margin-top: 20px;
+		padding: 10px;
+		text-align: center;
+	}
