@@ -13,7 +13,7 @@
 	<div class="col-md-3">
 		<div class="list-group">
 			<a href="{{route('home')}}" class="list-group-item">Folders &amp; Files </a>
-			<a href="#" class="list-group-item active">Categories</a>
+			<a href="{{route('categories.index')}}" class="list-group-item active">Categories</a>
 			<a href="#" class="list-group-item">Shared</a>
 		</div>	
 	</div>
@@ -29,41 +29,37 @@
 				</div>
 			</div>
 			<div class="panel-body">
-				<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Category name</th>
-        <th>Section</th>
-		<th></th>
-      </tr>
-    </thead>
-    <tbody>
-		
-		
-	@foreach($categories as $category)
+			<form action="store" method="POST">
+			
+			<div class="form-group">
+			
+			<label for="section">Choose section:</label>
+      
+	        <select class="form-control" name="sections_id">
+	        <?php
+			foreach($sections as $section){
 
 			
-			
-      <tr>
-        <td>{{ $category->id }}</td>
-		 <td>{{ $category->name }}</td>
-		  <td>{{ $category->sections->name }}</td>
-		  <td>
-		  <span class="label label-success">Edit</span>
-		  <span class="label label-danger">Delete</span> 
-		  </td>
-		  
-        <td>
-		</td>
-        <td></td>
-      </tr>
+			?>
+            <option value="<?php echo $section->id; ?>"><?php echo $section->name; ?></option>
+       
+			<?php
+			}
+			?>
+           </select>
+	       </div>
 	  
-	@endforeach
-      
-    </tbody>
-  </table>
+	  
+	       <div class="form-group">
+	       <label for="name">Category name:</label>
+			
+		   <input type="text" class="form-control" name="name" required>
+		   		   
+			
 			</div>
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<button type="submit" class="btn btn-default">Submit</button>
+			</form>
 		</div>
 	</div>
 </div>
