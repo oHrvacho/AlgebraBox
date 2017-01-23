@@ -153,6 +153,11 @@
 		color: #444;
 		text-decoration: none;
 	}
+	
+	#options-btn {
+		border-radius: 0;
+		margin: 0 15px;
+	}
 /*
 |--------------------------------------------------------------------------
 | GRID
@@ -309,4 +314,10 @@
 		margin-top: 20px;
 		padding: 10px;
 		text-align: center;
+	}
+	
+	.dropdown, .dropup {
+		position: relative;
+		width: 100px;
+		float: left;
 	}

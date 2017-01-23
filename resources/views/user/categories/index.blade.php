@@ -10,16 +10,18 @@
   </ol>
 </div>
 
+
 <div id="statistic" class="row">
 		 
 	<div class="col-md-3">
 		<div class="user-info">
-			<p>User ID: email</p>
+			<p>User ID: emal</p>
 			<p class="user-gravatar">
 				<img src="{!!asset('images/algebra-BOX-logo.png')!!}"/>
 				
 			</p>
 			
+		
 		</div>	
 	</div>
 	
@@ -174,4 +176,6 @@
 		</div>
 	</div>
 </div>
+
+
 @stop
