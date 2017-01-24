@@ -1,34 +1,23 @@
 @extends('layouts.index')
 
-
-@section('title', 'AlgebraBox | The greatest cloud storage')
+@section('title', 'Shared | AlgebraBox')
 
 @section('content')
 <div class="row">
   <ol class="breadcrumb">
-    <li class="active">Home</li>
+    <li><a href="{{route('home')}}">Home</a></li>
+	<li class="active">Shared</li>
   </ol>
 </div>
-
-{{-- @include('status.blade') --}} 
 
 <div id="statistic" class="row">
 		 
 	<div class="col-md-3">
 		<div class="user-info">
-		
 			<p>User ID: email</p>
-			{{--  
-			@foreach ($users as $user)
-			<p>User ID: {{ $user->id }}</p>
-			@endforeach
-			--}} 
 			<p class="user-gravatar">
 				<img src="{!!asset('images/algebra-BOX-logo.png')!!}"/>
 			</p>
-				{{--  
-				<img src="//www.gravatar.com/avatar/{{ md5($user->email) }}?d=mm" alt="{{ $user->email }}" class="img-circle">
-				--}} 
 			
 		</div>	
 	</div>
@@ -117,53 +106,23 @@
 			</div>
 		</div>
 	</div>
-
-
-<div id="folders" class="row">
-		
+	
+	
+<div class="categories" class="row">	
 	<div class="col-md-3">
-
-		
 		<div class="list-group">
-			<a href="#" class="list-group-item active">Folders &amp; Files </a>
-			<a href="{{route('categories.index')}}" class="list-group-item">Categories</a>
-			<a href="{{--  {{route('categories.shared')}} // {{route('shared.index')}} --}}#" class="list-group-item">Shared</a>
+			<a href="{{route('home')}}" class="list-group-item">Folders &amp; Files </a>
+			<a href="#" class="list-group-item active">Categories</a>
+			<a href="#" class="list-group-item">Shared</a>
 		</div>	
 	</div>
-	
-
-	
 	<div class="col-md-9">
 		<div class="panel panel-default">
 			<div class="panel-heading clearfix">
-				<div>
-				<h3 class="pull-left panel-title">Folders &amp; Files</h3>
-				</div>
-				<div class="dropdown">
-				<button id="options-btn" class="btn background-green dropdown-toggle" type="button" data-toggle="dropdown">Sort By
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-					<li><a href="#">Date</a></li>
-					<li><a href="#">Size</a></li>
-					<li><a href="#">Type</a></li>
-				  </ul>
-				  </div>
-				  
-				  <div class="dropdown">
-				  <button id="options-btn" class="btn background-green dropdown-toggle" type="button" data-toggle="dropdown">Share
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-					<li><a href="#">All</a></li>
-					<li><a href="#">Folder</a></li>
-					<li><a href="#">File</a></li>
-				  </ul>
-				</div>
-				
+				<h3 class="pull-left panel-title">Categories</h3>
 				<div class="pull-right">
-				
-				  
-					<a title="Create new folder" href="">
-						<span class="pull-right glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+					<a href="{{route('categories.create')}}">
+						<span class="pull-right glyphicon glyphicon-tag" aria-hidden="true"></span>
 						<span class="pull-right glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</a>
 				</div>
