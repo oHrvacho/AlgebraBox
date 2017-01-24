@@ -5,10 +5,9 @@
 		 
 	<div class="col-md-3">
 		<div class="user-info">
-			<p>User ID: emal</p>
+			<p>User ID: {{ Sentinel::check()->email}}</p>
 			<p class="user-gravatar">
 				<img src="{!!asset('images/algebra-BOX-logo.png')!!}"/>
-				
 			</p>
 			
 		</div>	
