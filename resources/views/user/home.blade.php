@@ -58,6 +58,13 @@
 				  <ul class="dropdown-menu">
 					<li class="disabled"><a href="#">PRO / Folder</a></li>
 					<li class="active"><a href="#">Upgrade Acc</a></li>
+					<li class="divider"></li>
+					<li><a title="Create new folder" href="">
+						<span class="pull-right glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+						<span class="pull-right glyphicon glyphicon-plus" aria-hidden="true"></span>
+						Folder
+					</a></li>
+					
 				  </ul>
 				</div>
 				
