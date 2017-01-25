@@ -3,12 +3,7 @@
 @section('title', 'Shared | AlgebraBox')
 
 @section('content')
-<div class="row">
-  <ol class="breadcrumb">
-    <li><a href="{{route('home')}}">Home</a></li>
-	<li class="active">Shared</li>
-  </ol>
-</div>
+
 
 <div id="statistic" class="row">
 		 
