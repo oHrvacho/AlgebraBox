@@ -36,17 +36,10 @@
 			<label for="section">Choose section:</label>
       
 	        <select class="form-control" name="sections_id">
-	        <?php
-			foreach($sections as $section){
-
-			
-			?>
-            <option value="<?php echo $section->id; ?>"><?php echo $section->name; ?></option>
-       
-			<?php
-			}
-			?>
-           </select>
+			@foreach($sections as $section)
+            			<option value="{{ $section->id; }}">{{ $section->name; }}</option>
+			@endforeach
+               </select>
 	       </div>
 	  
 	  
