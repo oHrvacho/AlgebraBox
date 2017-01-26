@@ -1,27 +1,24 @@
 @extends('layouts.index')
 
-@section('title', 'Categories | AlgebraBox')
+@section('title', 'Shared | AlgebraBox')
 
 @section('content')
 <div class="row">
   <ol class="breadcrumb">
     <li><a href="{{route('home')}}">Home</a></li>
-	<li class="active">Categories</li>
+	<li class="active">Shared</li>
   </ol>
 </div>
-
 
 <div id="statistic" class="row">
 		 
 	<div class="col-md-3">
 		<div class="user-info">
-			<p>User ID: emal</p>
+			<p>User ID: email</p>
 			<p class="user-gravatar">
 				<img src="{!!asset('images/algebra-BOX-logo.png')!!}"/>
-				
 			</p>
 			
-		
 		</div>	
 	</div>
 	
@@ -130,48 +127,10 @@
 					</a>
 				</div>
 			</div>
-
 			<div class="panel-body">
-				<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Category name</th>
-        <th>Section</th>
-		<th></th>
-      </tr>
-    </thead>
-    <tbody>
-		
-		
-	@foreach($categories as $category)
-
-			
-			
-      <tr>
-        <td>{{ $category->id }}</td>
-		 <td>{{ $category->name }}</td>
-		  <td>{{ $category->sections->name }}</td>
-		  <td>
-		  <span class="label label-success">Edit</span>
-		  <span class="label label-danger">Delete</span> 
-		  </td>
-		  
-        <td>
-		</td>
-        <td></td>
-      </tr>
-	  
-	@endforeach
-      
-    </tbody>
-  </table>
-			<div>
 				
 			</div>
 		</div>
 	</div>
 </div>
-
-
 @stop
