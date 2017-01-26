@@ -130,48 +130,44 @@
 					</a>
 				</div>
 			</div>
-			<div>
-				<div class="col-md-12">
-		<div class="panel panel-default">
-			
-				<div>
-					<div class="col-md-3 folder-info">
-						<div>
-							<h3>Documents</h3>
-							<p class="btn login-btn-box background-orange"><a class="color-ff" href="#" type="submit">Wiev</a></p>
-							
-						</div>	
-					</div>
-				
-				<div class="col-md-3">
-						<div class="folder-info">
-							<h3>Music</h3>
-							<p class="btn login-btn-box background-orange"><a class="color-ff" href="#" type="submit">Wiev</a></p>
-							
-						</div>	
-					</div>
-				
-					<div class="col-md-3">
-						<div class="folder-info">
-							<h3>Pictures</h3>
-							<p class="btn login-btn-box background-orange"><a class="color-ff" href="#" type="submit">Wiev</a></p>
-							
-						</div>	
-					</div>
-				
-				
-				
-					<div class="col-md-3">
-						<div class="folder-info">
-							<h3>Mix content</h3>
-							<p class="btn login-btn-box background-orange"><a class="color-ff" href="#" type="submit">Wiev</a></p>
-							
-						</div>	
-					</div>
-				</div>
-			</div>
-		</div>
+
+			<div class="panel-body">
+				<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Category name</th>
+        <th>Section</th>
+		<th></th>
+      </tr>
+    </thead>
+    <tbody>
 		
+		
+	@foreach($categories as $category)
+
+			
+			
+      <tr>
+        <td>{{ $category->id }}</td>
+		 <td>{{ $category->name }}</td>
+		  <td>{{ $category->sections->name }}</td>
+		  <td>
+		  <span class="label label-success">Edit</span>
+		  <span class="label label-danger">Delete</span> 
+		  </td>
+		  
+        <td>
+		</td>
+        <td></td>
+      </tr>
+	  
+	@endforeach
+      
+    </tbody>
+  </table>
+			<div>
+				
 			</div>
 		</div>
 	</div>
