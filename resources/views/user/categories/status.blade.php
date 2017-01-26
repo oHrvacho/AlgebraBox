@@ -1,11 +1,9 @@
-@extends('layouts.index')
-
 
 <div id="statistic" class="row">
 		 
 	<div class="col-md-3">
 		<div class="user-info">
-			<p>User ID: {{ Sentinel::check()->email}}</p>
+			
 			<p class="user-gravatar">
 				<img src="{!!asset('images/algebra-BOX-logo.png')!!}"/>
 			</p>
@@ -19,6 +17,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading clearfix">
 				<h3 class="pull-left panel-title">Status</h3>
+				<p class="user-status-info">User ID: {{ Sentinel::check()->email}} | Registreted on: {{ Sentinel::check()->created_at}} | Type: User</p>
+				
 			</div>
 				<div class="panel-body">
 					<div class="col-md-4">
@@ -36,7 +36,7 @@
 								  </tr>
 									<tr>
 									<td>Storage Used:</td>
-									<td class="used-info"60%</td>
+									<td class="used-info">60%</td>
 								  </tr>
 								</table>
 							</p>

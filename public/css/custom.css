@@ -74,7 +74,13 @@
         font-size: 4.8rem;
     }
     
-
+	.float-left {
+		width:50%
+	}
+	
+	.float-rightm {
+		float:right:
+	}
 
 /*
 |--------------------------------------------------------------------------
@@ -169,7 +175,11 @@
 		padding-top: 4px;
 	}
  
- 
+	 a.admin-navbar-brand {
+		padding: 5px;
+		display: inline-block;
+		font-size: 30px;
+	}
  
  /*
 |--------------------------------------------------------------------------
@@ -271,7 +281,17 @@
 		margin: 0 auto;
 	}
 
+	#user-search .form-control{
+		height: 35px;
+	}
 	
+	div#user-file {
+		padding: 5px;
+	}
+	
+	div#user-file:nth-child(odd) {
+		background: rgb(254, 245, 242);
+	}
 /*
 |--------------------------------------------------------------------------
 | INNER CONTENT
@@ -305,6 +325,9 @@
 		width: 100%;
 	}
 
+	p.user-status-info {
+		padding-left: 45px;
+	}
 /**
  * Folders
  *
