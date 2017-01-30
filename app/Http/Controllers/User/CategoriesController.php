@@ -44,7 +44,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-		
+
     	$sections = sections::all();
 		
         return view('user.categories.create', ['sections' => $sections]);
@@ -128,5 +128,13 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
+        if (isset($_POST["submit"])) {
+        $categories = new Categories();
+        $id = $_POST["submit"];
+        
+        $categories->id = $id;
+
+        $categories->destroy($id);
+    }
     }
 }

@@ -13,6 +13,7 @@
 
 // Index page
 Route::get('/', ['as' => 'index', 'uses' => 'IndexController@index']);
+Route::delete('categories/delete', ['uses' => 'User\CategoriesController@destroy']);
 // Home page
 Route::get('home', ['as' => 'home', 'uses' => 'User\HomeController@index']);
 
@@ -20,6 +21,7 @@ Route::get('home', ['as' => 'home', 'uses' => 'User\HomeController@index']);
 Route::group(['prefix' => 'user'], function () {
   Route::resource('categories', 'User\CategoriesController');
   Route::post('categories/store', ['uses' => 'User\CategoriesController@store']);
+
 
 });
 

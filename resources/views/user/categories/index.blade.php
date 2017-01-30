@@ -40,6 +40,7 @@
         <th>ID</th>
         <th>Category name</th>
         <th>Section</th>
+	  	<th>Action</th>
 		<th></th>
       </tr>
     </thead>
@@ -55,8 +56,10 @@
 		 <td>{{ $category->name }}</td>
 		  <td>{{ $category->sections->name }}</td>
 		  <td>
-		  <span class="label label-success">Edit</span>
-		  <span class="label label-danger">Delete</span> 
+		  <button><span class="label label-success">Edit</span></button>
+			  <button name="delete" value="{{ $category->id }}" onclick="return 'Jeste li sigurni da želite obrisati {{ $category->name }}'"><span class="label label-danger">
+					  <a href="{{route('categories.destroy', $category->id)}}">Delete</a>
+				  </span></button>
 		  </td>
 		  
         <td>
